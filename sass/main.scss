@@ -22,7 +22,7 @@ body{
     margin: auto;
     display: flex;
     align-items: center;
-
+    position: relative;
 }
 
 
@@ -34,8 +34,8 @@ body{
     justify-content: center;
     
 
-        &:nth-child(odd){
-            background-color: rgba(223, 223, 223, 0.211);
+        &:nth-child(1){
+            background-color: rgba(223, 223, 223, 0.671);
         }
 }
 
@@ -110,9 +110,17 @@ body{
 
  .middle-section{
     position: absolute;
-    top: 0;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+  
  }
  
+
+
+ .new-game-text, .hold, .roll{
+    text-align: center;
+ }
 
 
 
