@@ -55,6 +55,11 @@ body{
 
 .player-text{
     font-size: 40px;
+    color: rgb(193, 193, 193);
+
+        &-active{
+            color: black;
+        }
 }
 
 
@@ -62,6 +67,7 @@ body{
     text-align: center;
     padding-top: 20px;
     font-size: 80px;
+    color: red;
 }
 
 
@@ -110,11 +116,51 @@ body{
 
  .middle-section{
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
-    transform: translateX(-50%);
-  
+    transform: translate(-50%,-50%);
+    height: 70%;
+    
  }
+
+ .middle-section-inner{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+ }
+
+
+ .new-game-text{
+    font-size: 1.8em;
+    cursor: pointer;
+ }
+
+
+ .middle-bottom{
+    font-size: 1.8em;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+ }
+
+
+ .dé{
+    box-shadow: 0 0 50px rgb(174, 174, 174);
+    width: 200px;
+ }
+
+
+ .roll,.hold{
+    cursor: pointer;
+ }
+
+
+
+
+
  
 
 
