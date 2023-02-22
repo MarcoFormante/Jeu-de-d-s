@@ -1,1 +1,30 @@
-/*# sourceMappingURL=main.css.map */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(180deg, rgb(147, 110, 68), rgb(220, 121, 45), rgb(67, 37, 37));
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.body-inner {
+  width: 97%;
+  height: 95%;
+  background-color: rgb(255, 255, 255);
+  margin: auto;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 50%;
+  height: 100%;
+}
+.container:nth-child(odd) {
+  background-color: rgba(223, 223, 223, 0.304);
+}/*# sourceMappingURL=main.css.map */
