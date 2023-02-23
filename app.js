@@ -1,6 +1,13 @@
-let mixDice = false;
+let isMixDice = false;
 let currentScore = 0;
 
+const rollBtn = document.querySelector(".roll");
+
+rollBtn.addEventListener("click",mixingDice)
+
+const hold = document.querySelector(".hold");
+
+hold.addEventListener("click", holdSCore);
 
 
 class players {
@@ -18,7 +25,7 @@ class players {
 
                 } else {
                     this.isActive = false;
-            }
+                }
             
             
         }
@@ -36,7 +43,10 @@ startNewGame()
 
 function startNewGame() {
     player1.toggleActive();
-    console.log(player1.isActive);
+    player1.score = 0;
+    player1.globalScore = 0;
+    player2.score = 0;
+    player2.globalScore = 0;
     
 }
 
@@ -50,24 +60,19 @@ function newGame() {
 
 
 
-
-
-
-
-
-
-
-
-// // //MixDice and get Score
+// // //mix the Dice and get Score
 //  mixingDice();
 
 
 
 function mixingDice() {
+
+if (!isMixDice) {
+        console.log("clock");
     const minDiceNumber = 1;
     const maxDiceNumber = 5;
     const diceNumber = [1, 2, 3, 4, 5, 6];
-    mixDice = true;
+    isMixDice = true;
     let randomDiceNUmber = 0;
 
     
@@ -96,29 +101,80 @@ function mixingDice() {
         const img = diceImage.setAttribute("src", `/assets/images/de-${randomDiceNUmber}.jpg`)
 
         currentScore = randomDiceNUmber;
-        console.log(currentScore);
         
-       
     }
 
 
     function verifyDiceNumber(randomDiceNUmber) {
+        
         if (randomDiceNUmber === 1) {
             console.log("gameover");
-            
+            switchPlayer(); 
         } else {
-            console.log(currentScore + "questo");
-           
+            getDiceScore(randomDiceNUmber);
         }
+        
+
+        isMixDice = false;
+        }
+        
     }
     
 }
 
 
-
-
 function switchPlayer() {
-    if (condition) {
+    
+    const activeIcon1 = document.querySelector(".player-active");
+    const activeIcon2 = document.querySelector(".player-active2");
+
+    player1.toggleActive();
+    player2.toggleActive();
+
+    if (player1.isActive === true) {
+        activeIcon2.style.display = "none";
+        activeIcon1.style.display = "block";
+    } else {
+        activeIcon1.style.display = "none";
+        activeIcon2.style.display = "block";
+    }
+    
+}
+
+
+function holdSCore() {
+    if (!isMixDice) {
         
+        if (player1.isActive) {
+            player1.globalScore += player1.score;
+            document.querySelector(".player1-global-score").textContent = player1.score;
+            document.querySelector(".player1-current-score").textContent = 0;
+            player1.score = 0;
+        }
+
+        if (player2.isActive) {
+            player2.globalScore += player2.score;
+            document.querySelector(".player2-global-score").textContent = player2.score;
+            document.querySelector(".player2-current-score").textContent = 0;
+            player2.score = 0;
+        }
+    }
+
+    switchPlayer();
+   
+}
+
+
+function  getDiceScore(diceScore) {
+    if (!player1.isActive) {
+        player2.score += diceScore;
+        document.querySelector(".player2-current-score").textContent = player2.score;
+    } else {
+        player1.score += diceScore;
+        document.querySelector(".player1-current-score").textContent = player1.score;
+       
     }
 }
+
+// player1-current-score
+// player2-current-score
