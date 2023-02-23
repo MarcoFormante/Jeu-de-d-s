@@ -11,6 +11,8 @@ body {
   height: 100vh;
   display: flex;
   align-items: center;
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
 }
 
 .body-inner {
@@ -60,6 +62,7 @@ body {
   padding-top: 20px;
   font-size: 80px;
   color: red;
+  font-weight: 300;
 }
 
 .player-bottom-info {
@@ -148,6 +151,28 @@ body {
   margin-right: 10px;
 }
 
-.new-game-text {
+.roll-icon {
+  background-image: url(/assets/icons/cycle_FILL0_wght400_GRAD0_opsz48.svg);
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.hold-icon {
+  background-image: url(/assets/icons/place_item_FILL0_wght400_GRAD0_opsz48.svg);
+  display: block;
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  margin-right: 10px;
+}
+
+.hold {
+  margin: 0 auto;
+}
+
+.new-game-text, .roll, .hold {
   display: flex;
 }/*# sourceMappingURL=main.css.map */

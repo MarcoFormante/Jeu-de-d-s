@@ -161,7 +161,7 @@ function holdSCore() {
         
         if (player1.isActive) {
             player1.globalScore += player1.score;
-            document.querySelector(".player1-global-score").textContent = player1.score;
+            document.querySelector(".player1-global-score").textContent = player1.globalScore;
             document.querySelector(".player1-current-score").textContent = 0;
             player1.score = 0;
 
@@ -176,7 +176,7 @@ function holdSCore() {
         if (player2.score !== 0) {
             if (player2.isActive) {
                 player2.globalScore += player2.score;
-                document.querySelector(".player2-global-score").textContent = player2.score;
+                document.querySelector(".player2-global-score").textContent = player2.globalScore;
                 document.querySelector(".player2-current-score").textContent = 0;
                 player2.score = 0;
 
@@ -210,14 +210,12 @@ function lostScore() {
 
         player2.score = 0;
         document.querySelector(".player2-current-score").textContent = player2.score;
-        player2.globalScore = 0;
-        document.querySelector(".player2-global-score").textContent = player2.globalScore;
+       
 
     } else {
         player1.score = 0;
         document.querySelector(".player1-current-score").textContent = player1.score;
-        player1.globalScore = 0;
-        document.querySelector(".player1-global-score").textContent = player1.globalScore;
+      
        
     }
 }
@@ -229,5 +227,3 @@ function gameOver(winnerText) {
 }
 
 
-// player1-current-score
-// player2-current-score

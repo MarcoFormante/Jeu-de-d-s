@@ -10,9 +10,12 @@ body{
   width: 100vw;
   height: 100vh;
    display: flex;
-   align-items: center;
+    align-items: center;
+    font-family: 'Lato',sans-serif;
+    font-weight: 400;
 
 }
+
 
 
 .body-inner{
@@ -49,9 +52,12 @@ body{
     justify-content: space-between;
 }
 
+
 .player-top-info{
     position: relative;
 }
+
+
 
 .player-text{
     font-size: 40px;
@@ -69,6 +75,7 @@ body{
     padding-top: 20px;
     font-size: 80px;
     color: red;
+    font-weight: 300;
 }
 
 
@@ -86,6 +93,7 @@ body{
 }
 
 
+
 .player-active{
    background-color: red;
    width: 15px;
@@ -96,6 +104,7 @@ body{
    top: 15px;
    right: -40px;
 }
+
 
 
 .player-active2{
@@ -147,6 +156,7 @@ body{
     flex-direction: column;
     justify-content: space-between;
     
+    
  }
 
 
@@ -178,12 +188,34 @@ body{
     margin-right: 10px;
  }
 
+ .roll-icon{
+    background-image: url(/assets/icons/cycle_FILL0_wght400_GRAD0_opsz48.svg);
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    margin-right: 10px;
+ }
+
+
+ .hold-icon{
+    background-image: url(/assets/icons/place_item_FILL0_wght400_GRAD0_opsz48.svg);
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    margin-right: 10px;
+ }
+
+ .hold{
+    margin: 0 auto;
+ }
 
 
 
 
 
- .new-game-text{
+ .new-game-text,.roll,.hold{
     display: flex;
     
  }
