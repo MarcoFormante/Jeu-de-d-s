@@ -1,5 +1,6 @@
 let isMixDice = false;
 let currentScore = 0;
+let GameOver = false;
 
 const rollBtn = document.querySelector(".roll");
 
@@ -47,6 +48,8 @@ function startNewGame() {
     player1.globalScore = 0;
     player2.score = 0;
     player2.globalScore = 0;
+    document.querySelector(".player-text1").classList.toggle("player-text-active");
+       
     
 }
 
@@ -108,8 +111,10 @@ if (!isMixDice) {
     function verifyDiceNumber(randomDiceNUmber) {
         
         if (randomDiceNUmber === 1) {
-            console.log("gameover");
+            lostScore();
             switchPlayer(); 
+          
+
         } else {
             getDiceScore(randomDiceNUmber);
         }
@@ -134,34 +139,55 @@ function switchPlayer() {
     if (player1.isActive === true) {
         activeIcon2.style.display = "none";
         activeIcon1.style.display = "block";
+        
     } else {
         activeIcon1.style.display = "none";
         activeIcon2.style.display = "block";
     }
+
+    document.querySelectorAll(".player-text").forEach(pText => {
+        pText.classList.toggle("player-text-active");
+    });
     
 }
 
 
 function holdSCore() {
     if (!isMixDice) {
+
+    if (player1.score !== 0) {
+        
         
         if (player1.isActive) {
             player1.globalScore += player1.score;
             document.querySelector(".player1-global-score").textContent = player1.score;
             document.querySelector(".player1-current-score").textContent = 0;
             player1.score = 0;
-        }
 
-        if (player2.isActive) {
-            player2.globalScore += player2.score;
-            document.querySelector(".player2-global-score").textContent = player2.score;
-            document.querySelector(".player2-current-score").textContent = 0;
-            player2.score = 0;
+            if (player1.globalScore >= 100) {
+                player1.globalScore = 100;
+                gameOver("player 1 WIN !!")
+            }
         }
+        switchPlayer();
     }
+        
+        if (player2.score !== 0) {
+            if (player2.isActive) {
+                player2.globalScore += player2.score;
+                document.querySelector(".player2-global-score").textContent = player2.score;
+                document.querySelector(".player2-current-score").textContent = 0;
+                player2.score = 0;
 
-    switchPlayer();
-   
+                if (player2.globalScore >= 100) {
+                    player2.globalScore = 100;
+                    gameOver("player 2 WIN !!")
+                }
+            }
+            switchPlayer();
+
+        }   
+    } 
 }
 
 
@@ -175,6 +201,32 @@ function  getDiceScore(diceScore) {
        
     }
 }
+
+
+
+function lostScore() {
+    if (player2.isActive) {
+
+        player2.score = 0;
+        document.querySelector(".player2-current-score").textContent = player2.score;
+        player2.globalScore = 0;
+        document.querySelector(".player2-global-score").textContent = player2.globalScore;
+
+    } else {
+        player1.score = 0;
+        document.querySelector(".player1-current-score").textContent = player1.score;
+        player1.globalScore = 0;
+        document.querySelector(".player1-global-score").textContent = player1.globalScore;
+       
+    }
+}
+
+
+function gameOver(winnerText) {
+    alert(winnerText);
+    location.reload();
+}
+
 
 // player1-current-score
 // player2-current-score
