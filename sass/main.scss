@@ -129,12 +129,14 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-align: center;
  }
 
 
  .new-game-text{
     font-size: 1.8em;
     cursor: pointer;
+    align-items: center;
  }
 
 
@@ -151,6 +153,7 @@ body{
  .dé{
     box-shadow: 0 0 50px rgb(174, 174, 174);
     width: 200px;
+    
  }
 
 
@@ -161,14 +164,28 @@ body{
 
 
 
-
- 
-
-
  .new-game-text, .hold, .roll{
     text-align: center;
  }
 
 
+ .newgame-icon{
+    background-image: url(/assets/icons/add_circle_FILL0_wght400_GRAD0_opsz48.svg);
+    display: block;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+    margin-right: 10px;
+ }
+
+
+
+
+
+
+ .new-game-text{
+    display: flex;
+    
+ }
 
 

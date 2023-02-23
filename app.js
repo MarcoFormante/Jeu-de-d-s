@@ -3,12 +3,17 @@ let currentScore = 0;
 let GameOver = false;
 
 const rollBtn = document.querySelector(".roll");
+const hold = document.querySelector(".hold");
+const newGameText = document.querySelector(".new-game-text");
+
 
 rollBtn.addEventListener("click",mixingDice)
 
-const hold = document.querySelector(".hold");
-
 hold.addEventListener("click", holdSCore);
+
+newGameText.addEventListener("click", newGame);
+
+
 
 
 class players {
@@ -27,11 +32,11 @@ class players {
                 } else {
                     this.isActive = false;
                 }
-            
-            
+        
         }
     }
 }
+
 
 const player1 = new players();
 const player2 = new players();
@@ -56,15 +61,11 @@ function startNewGame() {
 
 
 function newGame() {
-    document.reload();
+   
+    location.reload();
 }
 
 
-
-
-
-// // //mix the Dice and get Score
-//  mixingDice();
 
 
 
