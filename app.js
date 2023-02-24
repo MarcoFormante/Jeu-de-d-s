@@ -23,16 +23,9 @@ class players {
         this.isActive = false;
 
         this.toggleActive = function () {
-            
-            if (this.isActive === false) {
-                
-                this.isActive = true;
-               
 
-                } else {
-                    this.isActive = false;
-                }
-        
+           this.isActive = !this.isActive;
+
         }
     }
 }
@@ -54,14 +47,14 @@ function startNewGame() {
     player2.score = 0;
     player2.globalScore = 0;
     document.querySelector(".player-text1").classList.toggle("player-text-active");
-       
-    
+
+
 }
 
 
 
 function newGame() {
-   
+
     location.reload();
 }
 
@@ -79,7 +72,7 @@ if (!isMixDice) {
     isMixDice = true;
     let randomDiceNUmber = 0;
 
-    
+
     let anim = setInterval(() => {
         animDice(diceNumber, minDiceNumber, maxDiceNumber);
     }, 100);
@@ -87,50 +80,50 @@ if (!isMixDice) {
 
 
     setTimeout(() => {
-        
+
         clearInterval(anim);
         verifyDiceNumber(currentScore);
-      
-           
+
+
        }, 1000);
-       
- 
+
+
 
     function animDice(diceNumber, minDiceNumber, maxDiceNumber) {
 
         let randomDiceNUmber = diceNumber[Math.floor( Math.random() * maxDiceNumber)];
-       
-        
+
+
         const diceImage = document.querySelector(".dé");
         const img = diceImage.setAttribute("src", `/assets/images/de-${randomDiceNUmber}.jpg`)
 
         currentScore = randomDiceNUmber;
-        
+
     }
 
 
     function verifyDiceNumber(randomDiceNUmber) {
-        
+
         if (randomDiceNUmber === 1) {
             lostScore();
-            switchPlayer(); 
-          
+            switchPlayer();
+
 
         } else {
             getDiceScore(randomDiceNUmber);
         }
-        
+
 
         isMixDice = false;
         }
-        
+
     }
-    
+
 }
 
 
 function switchPlayer() {
-    
+
     const activeIcon1 = document.querySelector(".player-active");
     const activeIcon2 = document.querySelector(".player-active2");
 
@@ -140,7 +133,7 @@ function switchPlayer() {
     if (player1.isActive === true) {
         activeIcon2.style.display = "none";
         activeIcon1.style.display = "block";
-        
+
     } else {
         activeIcon1.style.display = "none";
         activeIcon2.style.display = "block";
@@ -149,7 +142,7 @@ function switchPlayer() {
     document.querySelectorAll(".player-text").forEach(pText => {
         pText.classList.toggle("player-text-active");
     });
-    
+
 }
 
 
@@ -157,8 +150,8 @@ function holdSCore() {
     if (!isMixDice) {
 
     if (player1.score !== 0) {
-        
-        
+
+
         if (player1.isActive) {
             player1.globalScore += player1.score;
             document.querySelector(".player1-global-score").textContent = player1.globalScore;
@@ -172,7 +165,7 @@ function holdSCore() {
         }
         switchPlayer();
     }
-        
+
         if (player2.score !== 0) {
             if (player2.isActive) {
                 player2.globalScore += player2.score;
@@ -187,8 +180,8 @@ function holdSCore() {
             }
             switchPlayer();
 
-        }   
-    } 
+        }
+    }
 }
 
 
@@ -199,7 +192,7 @@ function  getDiceScore(diceScore) {
     } else {
         player1.score += diceScore;
         document.querySelector(".player1-current-score").textContent = player1.score;
-       
+
     }
 }
 
@@ -210,13 +203,13 @@ function lostScore() {
 
         player2.score = 0;
         document.querySelector(".player2-current-score").textContent = player2.score;
-       
+
 
     } else {
         player1.score = 0;
         document.querySelector(".player1-current-score").textContent = player1.score;
-      
-       
+
+
     }
 }
 
