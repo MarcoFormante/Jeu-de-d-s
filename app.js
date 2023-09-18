@@ -1,38 +1,32 @@
-let isMixDice = false;
+let diceIsRolling = false;
 let currentScore = 0;
-let GameOver = false;
 
 const rollBtn = document.querySelector(".roll");
-const hold = document.querySelector(".hold");
+const holdBtn = document.querySelector(".hold");
 const newGameText = document.querySelector(".new-game-text");
 
+rollBtn.addEventListener("click",rollDice)
 
-rollBtn.addEventListener("click",mixingDice)
-
-hold.addEventListener("click", holdSCore);
+holdBtn.addEventListener("click", holdScore);
 
 newGameText.addEventListener("click", newGame);
 
 
 
 
-class players {
+class player {
     constructor(score,globalScore) {
         this.score = score;
         this.globalScore = globalScore;
         this.isActive = false;
-
         this.toggleActive = function () {
-
            this.isActive = !this.isActive;
-
         }
     }
 }
 
-
-const player1 = new players();
-const player2 = new players();
+const player1 = new player();
+const player2 = new player();
 
 
 startNewGame()
@@ -61,60 +55,38 @@ function newGame() {
 
 
 
-
-function mixingDice() {
-
-if (!isMixDice) {
-        console.log("clock");
-    const minDiceNumber = 1;
-    const maxDiceNumber = 5;
-    const diceNumber = [1, 2, 3, 4, 5, 6];
-    isMixDice = true;
-    let randomDiceNUmber = 0;
-
-
-    let anim = setInterval(() => {
-        animDice(diceNumber, minDiceNumber, maxDiceNumber);
-    }, 100);
-
-
-
-    setTimeout(() => {
-
-        clearInterval(anim);
-        verifyDiceNumber(currentScore);
-
-
-       }, 1000);
-
-
+function rollDice() {
+    if (!diceIsRolling) {
+        const minDiceNumber = 1;
+        const maxDiceNumber = 6;
+        const diceNumber = [1, 2, 3, 4, 5, 6];
+        diceIsRolling = true;
+        
+        let anim = setInterval(() => {
+            animDice(diceNumber, minDiceNumber, maxDiceNumber);
+        }, 100);
+        
+        setTimeout(() => {
+            clearInterval(anim);
+            verifyDiceNumber(currentScore);
+           }, 1000);
 
     function animDice(diceNumber, minDiceNumber, maxDiceNumber) {
-
-        let randomDiceNUmber = diceNumber[Math.floor( Math.random() * maxDiceNumber)];
-
-
+        let randomDiceNumber = diceNumber[Math.floor( Math.random() * maxDiceNumber)];
         const diceImage = document.querySelector(".dé");
-        const img = diceImage.setAttribute("src", `/assets/images/de-${randomDiceNUmber}.jpg`)
-
-        currentScore = randomDiceNUmber;
-
+        const img = diceImage.setAttribute("src", `/assets/images/de-${randomDiceNumber}.jpg`)
+        currentScore = randomDiceNumber;
     }
 
 
-    function verifyDiceNumber(randomDiceNUmber) {
-
-        if (randomDiceNUmber === 1) {
+    function verifyDiceNumber(randomDiceNumber) {
+        if (randomDiceNumber === 1) {
             lostScore();
             switchPlayer();
-
-
         } else {
-            getDiceScore(randomDiceNUmber);
+            getDiceScore(randomDiceNumber);
         }
-
-
-        isMixDice = false;
+        diceIsRolling = false;
         }
 
     }
@@ -123,7 +95,6 @@ if (!isMixDice) {
 
 
 function switchPlayer() {
-
     const activeIcon1 = document.querySelector(".player-active");
     const activeIcon2 = document.querySelector(".player-active2");
 
@@ -146,8 +117,8 @@ function switchPlayer() {
 }
 
 
-function holdSCore() {
-    if (!isMixDice) {
+function holdScore() {
+    if (!diceIsRolling) {
 
     if (player1.score !== 0) {
 
